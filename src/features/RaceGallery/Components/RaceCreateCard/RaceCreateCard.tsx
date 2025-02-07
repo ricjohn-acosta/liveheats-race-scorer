@@ -24,10 +24,13 @@ export const RaceCreateCard = () => {
       </Button>
 
       <Modal
+        title={"Start a new race!"}
         open={openCreateRaceModal}
         onOpenChange={handleOpenCreateRaceModal}
       >
-        <div>test</div>
+        <div>
+          <div>test</div>
+        </div>
       </Modal>
     </>
   );

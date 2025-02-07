@@ -23,21 +23,29 @@ import { FC } from "react";
 interface ModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  title: string;
+  description?: string;
   children: React.ReactNode;
 }
 
-export const Modal: FC<ModalProps> = ({ open, onOpenChange, children }) => {
+export const Modal: FC<ModalProps> = ({
+  open,
+  onOpenChange,
+  children,
+  title,
+  description,
+}) => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   if (isDesktop) {
     return (
       <Dialog open={open} onOpenChange={onOpenChange}>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="sm:max-w-[600px] max-h-[calc(100%-64px)] overflow-auto">
           <DialogHeader>
-            <DialogTitle>Edit profile</DialogTitle>
-            <DialogDescription>
-              Make changes to your profile here. Click save when you're done.
-            </DialogDescription>
+            <DialogTitle className={"font-archivo underline"}>
+              {title}
+            </DialogTitle>
+            <DialogDescription>{description}</DialogDescription>
           </DialogHeader>
           {children}
         </DialogContent>
@@ -49,10 +57,10 @@ export const Modal: FC<ModalProps> = ({ open, onOpenChange, children }) => {
     <Drawer open={open} onOpenChange={onOpenChange}>
       <DrawerContent>
         <DrawerHeader className="text-left">
-          <DrawerTitle>Edit profile</DrawerTitle>
-          <DrawerDescription>
-            Make changes to your profile here. Click save when you're done.
-          </DrawerDescription>
+          <DrawerTitle className={"font-archivo underline"}>
+            {title}
+          </DrawerTitle>
+          <DrawerDescription>{description}</DrawerDescription>
         </DrawerHeader>
         {children}
         <DrawerFooter className="pt-2">
