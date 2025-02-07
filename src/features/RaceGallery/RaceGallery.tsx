@@ -4,7 +4,7 @@ import { RaceCard } from "@/features/RaceGallery/Components/RaceCard/RaceCard";
 
 const RaceGallery = () => {
   return (
-    <div className={"mt-4 grid grid-cols-3 gap-4"}>
+    <div className={"mt-4 grid lg:grid-cols-3 gap-4"}>
       <RaceCard />
       <RaceCard />
       <RaceCreateCard />

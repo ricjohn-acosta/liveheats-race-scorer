@@ -17,9 +17,9 @@ export const RaceCard = () => {
         18
       </div>
 
-      <div className={"flex flex-col gap-1"}>
-        <div className={"font-bold flex items-center"}>
-          <span className={"mr-4"}>Test title</span>
+      <div className={"w-full flex flex-col gap-1"}>
+        <div className={"font-bold flex items-center justify-between"}>
+          <span className={"w-20 truncate"}>Race 1</span>
           <Badge className={"rounded-[4px]"}>COMPLETE</Badge>
         </div>
         <div className={"flex items-center text-muted-foreground"}>
