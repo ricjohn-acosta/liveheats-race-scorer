@@ -3,7 +3,7 @@ import "./globals.css";
 import { Header } from "@/components/Header/Header";
 
 export const metadata: Metadata = {
-  title: "Liveheats | Race scoring manager",
+  title: "Liveheats | Race Manager",
 };
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
