@@ -10,7 +10,9 @@ export const RaceCard = () => {
       }
     >
       <div
-        className={"bg-gray-200 p-2 px-8 font-bold rounded-[8px] text-center"}
+        className={
+          "bg-gray-200 p-2 px-8 font-bold rounded-[8px] text-center font-archivo"
+        }
       >
         JAN
         <br />
@@ -19,7 +21,7 @@ export const RaceCard = () => {
 
       <div className={"w-full flex flex-col gap-1"}>
         <div className={"font-bold flex items-center justify-between"}>
-          <span className={"w-20 truncate"}>Race 1</span>
+          <span className={"w-20 truncate font-archivo"}>Race 1</span>
           <Badge className={"rounded-[4px]"}>COMPLETE</Badge>
         </div>
         <div className={"flex items-center text-muted-foreground"}>
