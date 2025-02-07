@@ -6,7 +6,7 @@ export const RaceCard = () => {
   return (
     <div
       className={
-        "w-full bg-white p-4 rounded-[16px] border-solid border-2 border-gray-300 flex flex-row gap-3"
+        "cursor-pointer w-full bg-white p-4 rounded-[16px] border-solid border-2 border-gray-300 flex flex-row gap-3"
       }
     >
       <div
