@@ -31,7 +31,7 @@ export const RaceCreateCard = () => {
         open={openCreateRaceModal}
         onOpenChange={handleOpenCreateRaceModal}
       >
-        <RaceCreateForm />
+        <RaceCreateForm closeFormModal={() => handleOpenCreateRaceModal()} />
       </Modal>
     </>
   );

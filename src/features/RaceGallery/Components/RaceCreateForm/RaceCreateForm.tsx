@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { FC } from "react";
 import { FormLabel, Form } from "@/components/ui/form";
 import { useRaceCreateForm } from "@/features/RaceGallery/Components/RaceCreateForm/useRaceCreateForm";
 import { ControlledInput } from "@/components/Input/ControlledInput";
@@ -9,11 +9,15 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Info } from "lucide-react";
 
-export const RaceCreateForm = () => {
+interface RaceCreateFormProps {
+  closeFormModal: () => void;
+}
+
+export const RaceCreateForm: FC<RaceCreateFormProps> = ({ closeFormModal }) => {
   const {
     data: { form, fields, createRaceDisabled },
     operations: { handleCreateRace, append, remove },
-  } = useRaceCreateForm();
+  } = useRaceCreateForm(closeFormModal);
 
   return (
     <>
@@ -34,7 +38,7 @@ export const RaceCreateForm = () => {
             }
           >
             <Info size={14} className={"mr-1"} />
-            Press enter to add a new lane!
+            Press enter to add a new participant!
           </div>
           {fields.map((field, i) => (
             <AddParticipantField
