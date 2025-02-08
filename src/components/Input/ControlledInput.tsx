@@ -27,7 +27,7 @@ export const ControlledInput: FC<ControlledInputProps> = ({
       render={({ field }) => (
         <FormItem>
           <FormControl>
-            <Input className={className} {...rest} {...field} />
+            <Input className={className} {...field} {...rest} />
           </FormControl>
           {<FormMessage />}
         </FormItem>
