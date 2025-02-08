@@ -5,10 +5,13 @@ import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRaceCreateCard } from "./useRaceCreateCard";
 import { Modal } from "@/components/Modal/Modal";
+import { RaceCreateForm } from "@/features/RaceGallery/Components/RaceCreateForm/RaceCreateForm";
 
 export const RaceCreateCard = () => {
-  const { openCreateRaceModal, handleOpenCreateRaceModal } =
-    useRaceCreateCard();
+  const {
+    data: { openCreateRaceModal },
+    operations: { handleOpenCreateRaceModal },
+  } = useRaceCreateCard();
 
   return (
     <>
@@ -28,9 +31,7 @@ export const RaceCreateCard = () => {
         open={openCreateRaceModal}
         onOpenChange={handleOpenCreateRaceModal}
       >
-        <div>
-          <div>test</div>
-        </div>
+        <RaceCreateForm />
       </Modal>
     </>
   );

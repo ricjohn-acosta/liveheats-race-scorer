@@ -8,7 +8,11 @@ export const useRaceCreateCard = () => {
   };
 
   return {
-    openCreateRaceModal,
-    handleOpenCreateRaceModal,
+    data: {
+      openCreateRaceModal,
+    },
+    operations: {
+      handleOpenCreateRaceModal,
+    },
   };
 };
