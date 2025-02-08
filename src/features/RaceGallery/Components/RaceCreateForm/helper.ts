@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 export const RaceCreateFormSchema = z.object({
+  raceId: z.string(),
   raceName: z.string().min(1, "Don't forget the race name!"),
   raceParticipants: z
     .array(

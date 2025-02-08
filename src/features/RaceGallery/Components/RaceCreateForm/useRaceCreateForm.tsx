@@ -5,11 +5,13 @@ import {
   RaceCreateFormSchema,
 } from "@/features/RaceGallery/Components/RaceCreateForm/helper";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { customAlphabet } from "nanoid";
 
 export const useRaceCreateForm = (closeFormModal: () => void) => {
   const form = useForm<RaceCreateForm>({
     mode: "onChange",
     defaultValues: {
+      raceId: customAlphabet("1234567890abcdef", 10)(),
       raceName: "",
       raceParticipants: [{ lane: 1, participantName: "" }],
       status: "live",
