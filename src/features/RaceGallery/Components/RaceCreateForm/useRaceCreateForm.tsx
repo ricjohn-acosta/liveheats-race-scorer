@@ -9,8 +9,8 @@ export const useRaceCreateForm = () => {
   const form = useForm<RaceCreateForm>({
     mode: "onChange",
     defaultValues: {
-      raceName: undefined,
-      raceParticipants: undefined,
+      raceName: "",
+      raceParticipants: [],
     },
     resolver: zodResolver(RaceCreateFormSchema),
     shouldFocusError: true,
