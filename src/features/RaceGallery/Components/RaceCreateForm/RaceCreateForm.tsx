@@ -4,13 +4,15 @@ import React from "react";
 import { FormLabel, Form } from "@/components/ui/form";
 import { useRaceCreateForm } from "@/features/RaceGallery/Components/RaceCreateForm/useRaceCreateForm";
 import { ControlledInput } from "@/components/Input/ControlledInput";
-import { AddParticipantField } from "@/features/RaceGallery/Components/RaceCreateForm/AddParticipantField/AddParticipantField";
+import { AddParticipantField } from "@/features/RaceGallery/Components/RaceCreateForm/Components/AddParticipantField/AddParticipantField";
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { Info } from "lucide-react";
 
 export const RaceCreateForm = () => {
   const {
-    data: { form },
-    operations: { handleCreateRace },
+    data: { form, fields, createRaceDisabled },
+    operations: { handleCreateRace, append, remove },
   } = useRaceCreateForm();
 
   return (
@@ -21,15 +23,34 @@ export const RaceCreateForm = () => {
           <ControlledInput
             control={form.control}
             name={"raceName"}
-            placeholder={"Enter race name"}
+            placeholder={"e.g: Highschool students vs Usain Bolt"}
           />
 
-          <div className={"mt-4"}>
-            <AddParticipantField form={form} />
-          </div>
+          <Separator className={"my-6"} />
 
-          <Button disabled className={"w-full mt-2"}>
-            Confirm
+          <div
+            className={
+              "flex flex-row items-center text-xs text-muted-foreground"
+            }
+          >
+            <Info size={14} className={"mr-1"} />
+            Press enter to add a new lane!
+          </div>
+          {fields.map((field, i) => (
+            <AddParticipantField
+              form={form}
+              append={append}
+              remove={remove}
+              key={field.id}
+              index={i}
+            />
+          ))}
+
+          <Button
+            disabled={createRaceDisabled}
+            className={"w-full mt-2 font-bold font-archivo"}
+          >
+            START RACE!
           </Button>
         </form>
       </Form>
