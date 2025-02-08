@@ -20,8 +20,10 @@ export const useRaceCreateForm = (closeFormModal: () => void) => {
     resolver: zodResolver(RaceCreateFormSchema),
     shouldFocusError: true,
   });
-  const [_, setRaces] = useLocalStorage("races", {});
+  const [liveHeatsRaceScorerRaces, setLiveHeatsRaceScorerRaces] =
+    useLocalStorage("liveHeatsRaceScorerRaces", []);
 
+  const raceId = form.watch("raceId");
   const raceParticipants = form.watch("raceParticipants");
   const raceName = form.watch("raceName");
   const status = form.watch("status");
@@ -33,7 +35,13 @@ export const useRaceCreateForm = (closeFormModal: () => void) => {
   });
 
   const handleCreateRace = async () => {
-    setRaces({ raceParticipants, raceName, status, createdAt });
+    const newRace = { raceId, raceParticipants, raceName, status, createdAt };
+    if (liveHeatsRaceScorerRaces) {
+      setLiveHeatsRaceScorerRaces([...liveHeatsRaceScorerRaces, newRace]);
+    } else {
+      setLiveHeatsRaceScorerRaces([newRace]);
+    }
+
     closeFormModal();
   };
 
