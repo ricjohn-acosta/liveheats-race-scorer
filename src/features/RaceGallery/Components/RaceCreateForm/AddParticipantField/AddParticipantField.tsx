@@ -16,7 +16,7 @@ export const AddParticipantField: FC<AddParticipantFieldProps> = ({ form }) => {
       <div className={"w-full"}>
         <ControlledInput
           control={form.control}
-          name={"raceName"}
+          name={"raceParticipants"}
           placeholder={"Enter participant name"}
         />
       </div>
