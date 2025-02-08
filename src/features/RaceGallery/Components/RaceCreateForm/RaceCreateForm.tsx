@@ -10,12 +10,13 @@ import { Button } from "@/components/ui/button";
 export const RaceCreateForm = () => {
   const {
     data: { form },
+    operations: { handleCreateRace },
   } = useRaceCreateForm();
 
   return (
     <>
       <Form {...form}>
-        <form>
+        <form onSubmit={form.handleSubmit(handleCreateRace)}>
           <FormLabel>Race name</FormLabel>
           <ControlledInput
             control={form.control}

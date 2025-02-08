@@ -16,7 +16,12 @@ export const useRaceCreateForm = () => {
     shouldFocusError: true,
   });
 
+  const handleCreateRace = async () => {
+    console.log("test");
+  };
+
   return {
     data: { form },
+    operations: { handleCreateRace },
   };
 };
