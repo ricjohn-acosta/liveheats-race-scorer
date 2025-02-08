@@ -6,7 +6,7 @@ import {
 } from "@/features/RaceGallery/Components/RaceCreateForm/helper";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 
-export const useRaceCreateForm = () => {
+export const useRaceCreateForm = (closeFormModal: () => void) => {
   const form = useForm<RaceCreateForm>({
     mode: "onChange",
     defaultValues: {
@@ -32,6 +32,7 @@ export const useRaceCreateForm = () => {
 
   const handleCreateRace = async () => {
     setRaces({ raceParticipants, raceName, status, createdAt });
+    closeFormModal();
   };
 
   return {
