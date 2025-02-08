@@ -62,7 +62,7 @@ export const Modal: FC<ModalProps> = ({
           </DrawerTitle>
           <DrawerDescription>{description}</DrawerDescription>
         </DrawerHeader>
-        {children}
+        <div className={"p-[16px]"}>{children}</div>
         <DrawerFooter className="pt-2">
           <DrawerClose asChild>
             <Button variant="outline">Cancel</Button>
