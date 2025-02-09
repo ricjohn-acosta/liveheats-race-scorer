@@ -18,3 +18,14 @@ export const getFormattedDate = (dateString: string | undefined) => {
     year: "numeric",
   }).format(date);
 };
+
+export const getOrdinalSuffix = (n: number | null) => {
+  if (!n) return;
+
+  if (n >= 11 && n <= 13) return `${n}th`;
+
+  const suffixes = ["th", "st", "nd", "rd"];
+  const lastDigit = n % 10;
+
+  return `${n}${suffixes[lastDigit] || "th"}`;
+};
