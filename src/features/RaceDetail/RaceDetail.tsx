@@ -16,7 +16,7 @@ export const RaceDetail: FC<RaceDetailProps> = ({ raceId }) => {
     data: { race },
   } = useRaceDetail(raceId);
 
-  if (!race) return null;
+  if (!race) return <div>No race found! 😢</div>;
 
   return (
     <>
