@@ -12,7 +12,7 @@ export const RaceCreateFormSchema = z.object({
     )
     .min(2, "At least two participants are required."),
   status: z.string(),
-  createdAt: z.date(),
+  createdAt: z.string(),
 });
 
 export type RaceCreateForm = z.infer<typeof RaceCreateFormSchema>;

@@ -8,5 +8,5 @@ export type Race = {
   raceParticipants: RaceParticipant[];
   raceName: string;
   status: string;
-  createdAt: Date;
+  createdAt: string;
 };

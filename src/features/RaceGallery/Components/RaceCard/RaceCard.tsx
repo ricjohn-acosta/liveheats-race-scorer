@@ -4,6 +4,8 @@ import React, { FC } from "react";
 import { UserRound } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Race } from "@/types/race";
+import Link from "next/link";
+import { getMonthAbbreviation } from "@/lib/utils";
 
 interface RaceCardProps {
   raceData: Race;
@@ -11,33 +13,39 @@ interface RaceCardProps {
 
 export const RaceCard: FC<RaceCardProps> = ({ raceData }) => {
   return (
-    <div
-      className={
-        "cursor-pointer w-full bg-white p-4 h-24 rounded-[16px] border-solid border-2 border-gray-300 flex flex-row gap-3"
-      }
-    >
+    <Link href={`race/${raceData.raceId}`}>
       <div
         className={
-          "bg-gray-200 p-2 px-8 font-bold rounded-[8px] text-center font-archivo"
+          "cursor-pointer w-full bg-white p-4 h-24 rounded-[16px] border-solid border-2 border-gray-300 flex flex-row gap-3"
         }
       >
-        JAN
-        <br />
-        18
-      </div>
+        <div
+          className={
+            "bg-gray-200 p-2 px-8 font-bold rounded-[8px] text-center font-archivo"
+          }
+        >
+          {getMonthAbbreviation(new Date(raceData.createdAt)).toUpperCase()}
+          <br />
+          {new Date(raceData.createdAt).getDate().toString()}
+        </div>
 
-      <div className={"w-full flex flex-col gap-1"}>
-        <div className={"font-bold flex items-center justify-between"}>
-          <span className={"lg:w-32 truncate font-archivo"}>
-            {raceData.raceName}
-          </span>
-          <Badge className={"rounded-[4px] uppercase"}>{raceData.status}</Badge>
-        </div>
-        <div className={"flex items-center text-muted-foreground"}>
-          <UserRound size={14} />
-          <span className={"text-sm"}>{raceData.raceParticipants.length}</span>
+        <div className={"w-full flex flex-col gap-1"}>
+          <div className={"font-bold flex items-center justify-between"}>
+            <span className={"lg:w-32 truncate font-archivo"}>
+              {raceData.raceName}
+            </span>
+            <Badge className={"rounded-[4px] uppercase"}>
+              {raceData.status}
+            </Badge>
+          </div>
+          <div className={"flex items-center text-muted-foreground"}>
+            <UserRound size={14} />
+            <span className={"text-sm"}>
+              {raceData.raceParticipants.length}
+            </span>
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Race } from "@/types/race";
+import { customAlphabet } from "nanoid";
 
 export const useRaceGallery = () => {
   const [races, setRaces] = useState<Race[]>([]);
@@ -7,14 +8,14 @@ export const useRaceGallery = () => {
   useEffect(() => {
     const storedData = localStorage.getItem("liveHeatsRaceScorers");
     const initData = {
-      raceId: "INIT12345",
+      raceId: customAlphabet("1234567890abcdef", 10)(),
       raceName: "Usain Bolt vs Barry Allen",
       raceParticipants: [
         { lane: 1, participantName: "Usain Bolt" },
         { lane: 2, participantName: "Barry Allen" },
       ],
       status: "live",
-      createdAt: new Date(),
+      createdAt: new Date().toDateString(),
     };
 
     if (!storedData) {

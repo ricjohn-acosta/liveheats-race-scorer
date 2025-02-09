@@ -18,7 +18,7 @@ export const useRaceCreateForm = (
       raceName: "",
       raceParticipants: [{ lane: 1, participantName: "" }],
       status: "live",
-      createdAt: new Date(),
+      createdAt: new Date().toDateString(),
     },
     resolver: zodResolver(RaceCreateFormSchema),
     shouldFocusError: true,
