@@ -18,9 +18,14 @@ export const Header = () => {
         />
       </Link>
 
-      <Avatar>
-        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-      </Avatar>
+      <a href={"https://www.linkedin.com/in/ricjohn-acosta/"} target="_blank">
+        <Avatar>
+          <AvatarImage
+            src="https://avatars.githubusercontent.com/u/41725332?v=4"
+            alt="github:ricjohn-acosta"
+          />
+        </Avatar>
+      </a>
     </header>
   );
 };
