@@ -1,8 +1,15 @@
-import React from "react";
+"use client";
+
+import React, { FC } from "react";
 import { UserRound } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Race } from "@/types/race";
 
-export const RaceCard = () => {
+interface RaceCardProps {
+  raceData: Race;
+}
+
+export const RaceCard: FC<RaceCardProps> = ({ raceData }) => {
   return (
     <div
       className={
@@ -21,12 +28,14 @@ export const RaceCard = () => {
 
       <div className={"w-full flex flex-col gap-1"}>
         <div className={"font-bold flex items-center justify-between"}>
-          <span className={"w-20 truncate font-archivo"}>Race 1</span>
-          <Badge className={"rounded-[4px]"}>COMPLETE</Badge>
+          <span className={"w-20 truncate font-archivo"}>
+            {raceData.raceName}
+          </span>
+          <Badge className={"rounded-[4px] uppercase"}>{raceData.status}</Badge>
         </div>
         <div className={"flex items-center text-muted-foreground"}>
           <UserRound size={14} />
-          <span className={"text-sm"}>12</span>
+          <span className={"text-sm"}>{raceData.raceParticipants.length}</span>
         </div>
       </div>
     </div>

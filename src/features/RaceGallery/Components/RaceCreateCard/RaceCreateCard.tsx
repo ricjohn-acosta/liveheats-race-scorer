@@ -1,13 +1,18 @@
 "use client";
 
-import React from "react";
+import React, { FC } from "react";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRaceCreateCard } from "./useRaceCreateCard";
 import { Modal } from "@/components/Modal/Modal";
 import { RaceCreateForm } from "@/features/RaceGallery/Components/RaceCreateForm/RaceCreateForm";
+import { Race } from "@/types/race";
 
-export const RaceCreateCard = () => {
+interface RaceCreateCardProps {
+  setRaces: (races: Race[]) => void;
+}
+
+export const RaceCreateCard: FC<RaceCreateCardProps> = ({ setRaces }) => {
   const {
     data: { openCreateRaceModal },
     operations: { handleOpenCreateRaceModal },
@@ -31,7 +36,10 @@ export const RaceCreateCard = () => {
         open={openCreateRaceModal}
         onOpenChange={handleOpenCreateRaceModal}
       >
-        <RaceCreateForm closeFormModal={() => handleOpenCreateRaceModal()} />
+        <RaceCreateForm
+          closeFormModal={() => handleOpenCreateRaceModal()}
+          setRaces={setRaces}
+        />
       </Modal>
     </>
   );

@@ -4,10 +4,13 @@ import {
   RaceCreateForm,
   RaceCreateFormSchema,
 } from "@/features/RaceGallery/Components/RaceCreateForm/helper";
-import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { customAlphabet } from "nanoid";
+import { Race } from "@/types/race";
 
-export const useRaceCreateForm = (closeFormModal: () => void) => {
+export const useRaceCreateForm = (
+  closeFormModal: () => void,
+  setRaces: (races: Race[]) => void,
+) => {
   const form = useForm<RaceCreateForm>({
     mode: "onChange",
     defaultValues: {
@@ -20,8 +23,6 @@ export const useRaceCreateForm = (closeFormModal: () => void) => {
     resolver: zodResolver(RaceCreateFormSchema),
     shouldFocusError: true,
   });
-  const [liveHeatsRaceScorerRaces, setLiveHeatsRaceScorerRaces] =
-    useLocalStorage("liveHeatsRaceScorerRaces", []);
 
   const raceId = form.watch("raceId");
   const raceParticipants = form.watch("raceParticipants");
@@ -35,13 +36,24 @@ export const useRaceCreateForm = (closeFormModal: () => void) => {
   });
 
   const handleCreateRace = async () => {
-    const newRace = { raceId, raceParticipants, raceName, status, createdAt };
-    if (liveHeatsRaceScorerRaces) {
-      setLiveHeatsRaceScorerRaces([...liveHeatsRaceScorerRaces, newRace]);
-    } else {
-      setLiveHeatsRaceScorerRaces([newRace]);
+    const storedData = localStorage.getItem("liveHeatsRaceScorers");
+    let liveHeatsRaceScorerRaces: Race[] = [];
+
+    try {
+      liveHeatsRaceScorerRaces = storedData ? JSON.parse(storedData) : [];
+    } catch (error) {
+      console.error(
+        "Error parsing liveHeatsRaceScorers from localStorage:",
+        error,
+      );
+      liveHeatsRaceScorerRaces = [];
     }
 
+    const newRace = { raceId, raceParticipants, raceName, status, createdAt };
+    const updatedRaces = [...liveHeatsRaceScorerRaces, newRace];
+
+    localStorage.setItem("liveHeatsRaceScorers", JSON.stringify(updatedRaces));
+    setRaces(updatedRaces);
     closeFormModal();
   };
 
@@ -49,7 +61,7 @@ export const useRaceCreateForm = (closeFormModal: () => void) => {
     data: {
       form,
       fields,
-      createRaceDisabled: raceParticipants.length < 3 || raceName === "",
+      createRaceDisabled: raceParticipants.length < 2 || raceName === "",
     },
     operations: { handleCreateRace, append, remove },
   };

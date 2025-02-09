@@ -8,16 +8,21 @@ import { AddParticipantField } from "@/features/RaceGallery/Components/RaceCreat
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Info } from "lucide-react";
+import { Race } from "@/types/race";
 
 interface RaceCreateFormProps {
   closeFormModal: () => void;
+  setRaces: (races: Race[]) => void;
 }
 
-export const RaceCreateForm: FC<RaceCreateFormProps> = ({ closeFormModal }) => {
+export const RaceCreateForm: FC<RaceCreateFormProps> = ({
+  closeFormModal,
+  setRaces,
+}) => {
   const {
     data: { form, fields, createRaceDisabled },
     operations: { handleCreateRace, append, remove },
-  } = useRaceCreateForm(closeFormModal);
+  } = useRaceCreateForm(closeFormModal, setRaces);
 
   return (
     <>
