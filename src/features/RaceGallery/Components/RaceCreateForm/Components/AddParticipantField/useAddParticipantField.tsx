@@ -10,7 +10,7 @@ export const useAddParticipantField = (
   ) => {
     if (e.key === "Enter" && e.currentTarget.value.trim() !== "") {
       e.preventDefault();
-      append({ lane, participantName: "" });
+      append({ lane, participantName: "", place: 0 });
     }
   };
 
