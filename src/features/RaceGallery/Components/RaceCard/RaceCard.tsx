@@ -2,10 +2,10 @@
 
 import React, { FC } from "react";
 import { UserRound } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import { Race } from "@/types/race";
 import Link from "next/link";
 import { getMonthAbbreviation } from "@/lib/utils";
+import { StatusBadge } from "@/components/StatusBadge/StatusBadge";
 
 interface RaceCardProps {
   raceData: Race;
@@ -34,9 +34,7 @@ export const RaceCard: FC<RaceCardProps> = ({ raceData }) => {
             <span className={"lg:w-32 truncate font-archivo"}>
               {raceData.raceName}
             </span>
-            <Badge className={"rounded-[4px] uppercase"}>
-              {raceData.status}
-            </Badge>
+            <StatusBadge>{raceData.status}</StatusBadge>
           </div>
           <div className={"flex items-center text-muted-foreground"}>
             <UserRound size={14} />
