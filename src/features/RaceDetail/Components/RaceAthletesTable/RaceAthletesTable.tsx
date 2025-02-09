@@ -15,12 +15,17 @@ import {
 } from "@/components/ui/select";
 import { FC } from "react";
 import { Race } from "@/types/race";
+import { useRaceAthletesTable } from "@/features/RaceDetail/Components/RaceAthletesTable/useRaceAthletesTable";
 
 interface RaceAthletesTableProps {
   race: Race;
 }
 
 export const RaceAthletesTable: FC<RaceAthletesTableProps> = ({ race }) => {
+  const {
+    operations: { handlePlaceSelect },
+  } = useRaceAthletesTable();
+
   return (
     <Table>
       <TableHeader>
@@ -39,14 +44,23 @@ export const RaceAthletesTable: FC<RaceAthletesTableProps> = ({ race }) => {
               </TableCell>
               <TableCell>{participant.participantName}</TableCell>
               <TableCell className={"w-1/3"}>
-                <Select>
+                <Select
+                  onValueChange={(value) =>
+                    handlePlaceSelect(participant.lane, Number(value))
+                  }
+                >
                   <SelectTrigger className="w-[180px]">
                     <SelectValue placeholder="" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="1">1</SelectItem>
-                    <SelectItem value="2">2</SelectItem>
-                    <SelectItem value="3">3</SelectItem>
+                    {race.raceParticipants.map((_, index) => {
+                      const place = index + 1;
+                      return (
+                        <SelectItem key={index} value={place.toString()}>
+                          {place}
+                        </SelectItem>
+                      );
+                    })}
                   </SelectContent>
                 </Select>
               </TableCell>

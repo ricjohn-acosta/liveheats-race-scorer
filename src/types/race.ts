@@ -10,3 +10,8 @@ export type Race = {
   status: string;
   createdAt: string;
 };
+
+export type RaceResult = {
+  place: number;
+  lane: number;
+};
