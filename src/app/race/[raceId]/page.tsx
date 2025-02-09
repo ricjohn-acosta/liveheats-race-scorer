@@ -6,7 +6,8 @@ interface RaceDetailPageProps {
 }
 
 const RaceDetailPage: FC<RaceDetailPageProps> = async ({ params }) => {
-  return <RaceDetail raceId={params.raceId} />;
+  const { raceId } = await params;
+  return <RaceDetail raceId={raceId} />;
 };
 
 export default RaceDetailPage;
