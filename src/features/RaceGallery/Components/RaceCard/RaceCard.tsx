@@ -28,7 +28,7 @@ export const RaceCard: FC<RaceCardProps> = ({ raceData }) => {
 
       <div className={"w-full flex flex-col gap-1"}>
         <div className={"font-bold flex items-center justify-between"}>
-          <span className={"w-20 truncate font-archivo"}>
+          <span className={"lg:w-32 truncate font-archivo"}>
             {raceData.raceName}
           </span>
           <Badge className={"rounded-[4px] uppercase"}>{raceData.status}</Badge>
