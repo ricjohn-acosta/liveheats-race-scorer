@@ -1,7 +1,12 @@
 import { RaceDetail } from "@/features/RaceDetail/RaceDetail";
+import { FC } from "react";
 
-const RaceDetailPage = () => {
-  return <RaceDetail />;
+interface RaceDetailPageProps {
+  params: { raceId: string };
+}
+
+const RaceDetailPage: FC<RaceDetailPageProps> = async ({ params }) => {
+  return <RaceDetail raceId={params.raceId} />;
 };
 
 export default RaceDetailPage;
