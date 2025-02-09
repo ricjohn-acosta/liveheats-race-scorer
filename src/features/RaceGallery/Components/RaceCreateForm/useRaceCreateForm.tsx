@@ -16,7 +16,7 @@ export const useRaceCreateForm = (
     defaultValues: {
       raceId: customAlphabet("1234567890abcdef", 10)(),
       raceName: "",
-      raceParticipants: [{ lane: 1, participantName: "" }],
+      raceParticipants: [{ lane: 1, participantName: "", place: null }],
       status: "live",
       createdAt: new Date().toDateString(),
     },

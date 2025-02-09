@@ -11,8 +11,8 @@ export const useRaceGallery = () => {
       raceId: customAlphabet("1234567890abcdef", 10)(),
       raceName: "Usain Bolt vs Barry Allen",
       raceParticipants: [
-        { lane: 1, participantName: "Usain Bolt" },
-        { lane: 2, participantName: "Barry Allen" },
+        { lane: 1, participantName: "Usain Bolt", place: null },
+        { lane: 2, participantName: "Barry Allen", place: null },
       ],
       status: "live",
       createdAt: new Date().toDateString(),

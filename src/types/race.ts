@@ -1,6 +1,7 @@
 export type RaceParticipant = {
   lane: number;
   participantName: string;
+  place: number | null;
 };
 
 export type Race = {

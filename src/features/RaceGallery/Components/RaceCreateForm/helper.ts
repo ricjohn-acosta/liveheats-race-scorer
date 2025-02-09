@@ -7,6 +7,7 @@ export const RaceCreateFormSchema = z.object({
     .array(
       z.object({
         lane: z.number(),
+        place: z.number().nullable(),
         participantName: z
           .string()
           .trim()
