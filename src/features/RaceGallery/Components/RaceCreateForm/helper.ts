@@ -7,7 +7,10 @@ export const RaceCreateFormSchema = z.object({
     .array(
       z.object({
         lane: z.number(),
-        participantName: z.string().min(1, "Please enter the athlete's name!"),
+        participantName: z
+          .string()
+          .trim()
+          .min(1, "Please enter the athlete's name!"),
       }),
     )
     .min(2, "At least two participants are required."),
