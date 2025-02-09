@@ -59,7 +59,7 @@ export const RaceCreateForm: FC<RaceCreateFormProps> = ({
             disabled={createRaceDisabled}
             className={"w-full mt-2 font-bold font-archivo"}
           >
-            START RACE!
+            Start race!
           </Button>
         </form>
       </Form>
