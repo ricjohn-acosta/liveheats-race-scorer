@@ -92,9 +92,7 @@ export const RaceAthletesTable: FC<RaceAthletesTableProps> = ({ race }) => {
           <Button
             onClick={handleFinishRace}
             disabled={results.length !== race.raceParticipants.length}
-            className={
-              "mt-2 hover:bg-green-400 bg-green-500 font-bold font-archivo"
-            }
+            className={"mt-2 font-bold font-archivo"}
           >
             Finish race!
           </Button>
