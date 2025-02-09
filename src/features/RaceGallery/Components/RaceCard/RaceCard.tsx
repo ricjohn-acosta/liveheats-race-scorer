@@ -24,9 +24,11 @@ export const RaceCard: FC<RaceCardProps> = ({ raceData }) => {
             "bg-gray-200 p-2 px-8 font-bold rounded-[8px] text-center font-archivo"
           }
         >
-          {getMonthAbbreviation(new Date(raceData.createdAt)).toUpperCase()}
+          <span>
+            {getMonthAbbreviation(new Date(raceData.createdAt)).toUpperCase()}
+          </span>
           <br />
-          {new Date(raceData.createdAt).getDate().toString()}
+          <span>{new Date(raceData.createdAt).getDate().toString()}</span>
         </div>
 
         <div className={"w-full flex flex-col gap-1"}>
