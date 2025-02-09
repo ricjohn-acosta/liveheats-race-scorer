@@ -17,6 +17,7 @@ import { FC } from "react";
 import { Race } from "@/types/race";
 import { useRaceAthletesTable } from "@/features/RaceDetail/Components/RaceAthletesTable/useRaceAthletesTable";
 import { Button } from "@/components/ui/button";
+import { getOrdinalSuffix } from "@/lib/utils";
 
 interface RaceAthletesTableProps {
   race: Race;
@@ -24,9 +25,9 @@ interface RaceAthletesTableProps {
 
 export const RaceAthletesTable: FC<RaceAthletesTableProps> = ({ race }) => {
   const {
-    data: { results },
-    operations: { handlePlaceSelect },
-  } = useRaceAthletesTable();
+    data: { results, raceState },
+    operations: { handlePlaceSelect, handleFinishRace },
+  } = useRaceAthletesTable(race);
 
   return (
     <>
@@ -39,7 +40,7 @@ export const RaceAthletesTable: FC<RaceAthletesTableProps> = ({ race }) => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {race.raceParticipants.map((participant, i) => {
+          {raceState.raceParticipants.map((participant, i) => {
             return (
               <TableRow key={i}>
                 <TableCell
@@ -49,25 +50,36 @@ export const RaceAthletesTable: FC<RaceAthletesTableProps> = ({ race }) => {
                 </TableCell>
                 <TableCell>{participant.participantName}</TableCell>
                 <TableCell className={"w-1/3"}>
-                  <Select
-                    onValueChange={(value) =>
-                      handlePlaceSelect(participant.lane, Number(value))
-                    }
-                  >
-                    <SelectTrigger className="w-[180px]">
-                      <SelectValue placeholder="" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {race.raceParticipants.map((_, index) => {
-                        const place = index + 1;
-                        return (
-                          <SelectItem key={index} value={place.toString()}>
-                            {place}
-                          </SelectItem>
-                        );
-                      })}
-                    </SelectContent>
-                  </Select>
+                  {raceState.status === "live" ? (
+                    <Select
+                      onValueChange={(value) =>
+                        handlePlaceSelect(participant.lane, Number(value))
+                      }
+                    >
+                      <SelectTrigger className="w-[180px]">
+                        <SelectValue placeholder="" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {race.raceParticipants.map((_, index) => {
+                          const place = index + 1;
+                          return (
+                            <SelectItem key={index} value={place.toString()}>
+                              {place}
+                            </SelectItem>
+                          );
+                        })}
+                      </SelectContent>
+                    </Select>
+                  ) : (
+                    <span
+                      className={
+                        "font-archivo text-2xl font-semibold text-yellow-500"
+                      }
+                    >
+                      {getOrdinalSuffix(participant.place)}{" "}
+                      {participant.place === 1 && `🥇`}
+                    </span>
+                  )}
                 </TableCell>
               </TableRow>
             );
@@ -76,8 +88,9 @@ export const RaceAthletesTable: FC<RaceAthletesTableProps> = ({ race }) => {
       </Table>
 
       <div className={"w-full flex justify-end"}>
-        {race.status === "live" && (
+        {raceState.status === "live" && (
           <Button
+            onClick={handleFinishRace}
             disabled={results.length !== race.raceParticipants.length}
             className={
               "mt-2 hover:bg-green-400 bg-green-500 font-bold font-archivo"
