@@ -12,6 +12,7 @@ Visit https://liveheats-race-scorer.vercel.app/ to demo the app
 ```
 yarn install
 yarn dev
+visit localhost:3001
 ```
 
 #### Run this command to run the test suit
