@@ -52,6 +52,9 @@ export const RaceCreateForm: FC<RaceCreateFormProps> = ({
           />
         ))}
 
+        <span className={"text-sm text-destructive font-medium"}>
+          {form.formState.errors.raceParticipants?.root?.message}
+        </span>
         <Button
           disabled={createRaceDisabled}
           className={"w-full mt-2 font-bold font-archivo"}
