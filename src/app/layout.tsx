@@ -21,6 +21,13 @@ const archivo = Archivo({
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
   <html lang="en" className={`${inter.variable} ${archivo.variable}`}>
+    <head>
+      <link
+        rel="icon"
+        href="https://liveheats.com/static/icons/favicon-32x32.png"
+        sizes="any"
+      />
+    </head>
     <body className={"bg-[#FCFCFD]"}>
       <Header />
       <div
