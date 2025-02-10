@@ -10,7 +10,7 @@ yarn install
 yarn dev
 ```
 
-#### Run this command to run the test suit
+#### Run this command to run the test suite
 ```
 yarn test
 ```
