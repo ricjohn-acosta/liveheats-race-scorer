@@ -36,7 +36,7 @@ export const RaceCard: FC<RaceCardProps> = ({ raceData }) => {
 
           <div className="w-full flex flex-col gap-1">
             <div className="font-bold flex items-center justify-between">
-              <span className="font-archivo truncate  max-w-[50%] md:max-w-[75%] lg:max-w-48">
+              <span className="font-archivo truncate  max-w-[70%] md:max-w-[75%] lg:max-w-48">
                 {raceData.raceName}
               </span>
             </div>
