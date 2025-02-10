@@ -59,7 +59,7 @@ export const Modal: FC<ModalProps> = ({
           </DrawerTitle>
           <DrawerDescription>{description}</DrawerDescription>
         </DrawerHeader>
-        <div className={"p-[16px]"}>{children}</div>
+        <div className={"max-h-80 overflow-y-scroll p-[16px]"}>{children}</div>
       </DrawerContent>
     </Drawer>
   );
