@@ -12,7 +12,7 @@ const RaceGallery = () => {
   } = useRaceGallery();
 
   return (
-    <div className={"mt-4 grid lg:grid-cols-3 gap-4"}>
+    <div className={"mt-4 grid grid-cols-1 lg:grid-cols-3 gap-4"}>
       {races?.map((race, i) => (
         <Fragment key={i}>
           <RaceCard raceData={race} />
