@@ -1,7 +1,6 @@
 import * as React from "react";
 
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -11,10 +10,8 @@ import {
 } from "@/components/ui/dialog";
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
   DrawerDescription,
-  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
 } from "@/components/ui/drawer";
