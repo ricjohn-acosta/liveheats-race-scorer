@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export const Header = () => {
   return (
-    <header className="h-[60px] flex items-center justify-between px-[16px] py-[4px] bg-[#FCFCFD] sticky top-0 border-b border-[#DADEE2]">
+    <header className="z-10 h-[60px] flex items-center justify-between px-[16px] py-[4px] bg-[#FCFCFD] sticky top-0 border-b border-[#DADEE2]">
       <Link href="/">
         <Image
           src={
