@@ -43,7 +43,7 @@ export const RaceCreateForm: FC<RaceCreateFormProps> = ({
             }
           >
             <Info size={14} className={"mr-1"} />
-            Press enter to add a new participant!
+            Press Enter to add a new participant!
           </div>
           {fields.map((field, i) => (
             <AddParticipantField
