@@ -1,4 +1,4 @@
-import { assignParticipantPlaces } from "../helper"; // Adjust the import path
+import { assignParticipantPlaces } from "../helper";
 
 describe("assignParticipantPlaces", () => {
   it("assigns correct places when all results are different", () => {
